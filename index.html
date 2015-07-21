@@ -38,14 +38,16 @@
       -ms-user-select: none;
     }
     #game canvas {
-      image-rendering:optimizeSpeed;             /* Legal fallback */
-      image-rendering:-moz-crisp-edges;          /* Firefox        */
-      image-rendering:-o-crisp-edges;            /* Opera          */
-      image-rendering:-webkit-optimize-contrast; /* Safari         */
-      image-rendering:optimize-contrast;         /* CSS3 Proposed  */
-      image-rendering:crisp-edges;               /* CSS4 Proposed  */
-      image-rendering:pixelated;                 /* CSS4 Proposed  */
-      -ms-interpolation-mode:nearest-neighbor;   /* IE8+           */
+      /* Uncomment this for css pixel scaling
+      image-rendering:optimizeSpeed;
+      image-rendering:-moz-crisp-edges;
+      image-rendering:-o-crisp-edges;
+      image-rendering:-webkit-optimize-contrast;
+      image-rendering:optimize-contrast;
+      image-rendering:crisp-edges;
+      image-rendering:pixelated;
+      -ms-interpolation-mode:nearest-neighbor;
+      */
       }
   </style>
 
