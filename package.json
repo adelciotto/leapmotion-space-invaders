@@ -1,0 +1,53 @@
+{
+  "name": "gulp-phaser-template",
+  "private": true,
+  "version": "0.0.1",
+  "description": "my personal project template for phaser games. Uses gulp for task automation",
+  "scripts": {
+    "start": "gulp start",
+    "watch": "gulp",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adelciotto/gulp-phaser-template"
+  },
+  "keywords": [
+    "phaser.js",
+    "game",
+    "gulp"
+  ],
+  "author": "Anthony Del Ciotto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adelciotto/gulp-phaser-template/issues"
+  },
+  "homepage": "https://github.com/adelciotto/gulp-phaser-template",
+  "devDependencies": {
+    "babelify": "6.1.2",
+    "browser-sync": "2.7.10",
+    "browserify": "10.2.4",
+    "browserify-ngannotate": "1.0.1",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-cached": "1.1.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-jshint": "^1.9.2",
+    "gulp-jsonmin": "^1.0.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^1.2.1",
+    "gulp-sourcemaps": "^1.5.0",
+    "jshint-summary": "^0.4.0",
+    "run-sequence": "^1.1.2",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0",
+    "watchify": "3.2.2"
+  },
+  "dependencies": {
+    "phaser": "^2.3.0",
+    "phaser-debug": "^1.1.6",
+    "underscore": "^1.8.3"
+  }
+}
