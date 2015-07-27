@@ -9,7 +9,7 @@
 var states = require('./states');
 
 window.onload = function() {
-    var game = new Phaser.Game(400, 240, Phaser.AUTO, 'game', null);
+    var game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
 
     // add all the game states and then start the boot state
     _.each(states, (val, key) => {

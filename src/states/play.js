@@ -6,11 +6,13 @@
  * ===========================================================================
  */
 
+import constants from '../constants';
+
 export default class PlayState extends Phaser.State {
     create() {
-        this.logo = this.add.sprite(this.world.centerX, this.world.centerY, 'logo');
+        this.logo = this.add.sprite(this.world.centerX, this.world.centerY,
+            constants.AssetKeys.PHASER_LOGO);
         this.logo.anchor.set(0.5);
-        this.logo.scale.set(0.5);
     }
 
     update() {
