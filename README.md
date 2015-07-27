@@ -3,13 +3,17 @@
 This repository contains a basic template for a HTML5 game. Using the [Phaser](http://phaser.io) game framework;
 written in [ES6](https://babeljs.io/) and using [gulp](http://gulpjs.com/) for build task automation.
 
+### View:
+
+The template is running live [here](http://adelciotto.github.io/gulp-phaser-template/)
+
 ### How to use:
 
 Firstly, ensure that Node.js & npm are installed:
 
 ```shell
-node -v   // should return something like V0.12.2
-npm -v    // should return something like 2.7.5
+node -v   # should return something like V0.12.2
+npm -v    # should return something like 2.7.5
 ```
 If not then download it [here](http://nodejs.org).
 
