@@ -36,6 +36,10 @@ npm install && npm run start
 * ```npm run watch``` - Builds the scripts and assets; then constantly watches all the ES6 source files for any changes.
 * ```npm run build``` - Only builds the scripts and assets.
 
+### JS Conventions
+
+I personally stick to the JS coding conventions outlined [here](https://github.com/airbnb/javascript) by [airbnb](https://github.com/airbnb)
+
 ### License and Legal
 
 This code-base is released under the [MIT License](http://opensource.org/licenses/MIT).

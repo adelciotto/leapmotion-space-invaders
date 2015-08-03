@@ -1,9 +1,8 @@
 /*
- * ===========================================================================
- * File: gulpfile.js
- * Author: Anthony Del Ciotto
- * Desc: TODO
- * ===========================================================================
+ * gulpfile.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
 var gulp = require('gulp');
@@ -34,23 +33,24 @@ gulp.task('build', function(cb) {
 });
 
 /**
- * Define the 'start' task. This task simply builds all the scripts and assets; then
- * starts the server. No files will be watched. This task it suitable to simulate a production
- * environment.
+ * Define the 'start' task. This task simply builds all the scripts and assets;
+ * then starts the server. No files will be watched. This task it suitable to
+ * simulate a production environment.
  */
 gulp.task('start', function(cb) {
     runSequence('build', 'serve', cb);
 });
 
 /**
- * Define the 'watch' task. This task watches all es6 source files; rebuilding them
- * and refreshing the browser on saved changes. This task is suitable for development.
+ * Define the 'watch' task. This task watches all es6 source files; rebuilding
+ * them and refreshing the browser on saved changes. This task is suitable for
+ * development.
  */
 gulp.task('watch', function(cb) {
     runSequence(['copy', 'assets'], ['jshint', 'scripts:watch'], 'serve', cb);
 });
 
 /**
- * Simply running 'gulp' at the command line will by default run the 'watch' task.
+ * Simply running 'gulp' at the command line will by default run the watch task.
  */
 gulp.task('default', ['watch']);

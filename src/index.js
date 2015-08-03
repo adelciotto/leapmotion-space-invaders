@@ -1,15 +1,14 @@
 /*
- * ===========================================================================
- * File: index.js
- * Author: Anthony Del Ciotto
- * Desc: The games main entry point.
- * ===========================================================================
+ * index.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
 var states = require('./states');
 
 window.onload = function() {
-    var game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
+    const game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
 
     // add all the game states and then start the boot state
     _.each(states, (val, key) => {

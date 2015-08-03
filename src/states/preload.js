@@ -1,12 +1,11 @@
 /*
- * ===========================================================================
- * File: preload.js
- * Author: Anthony Del Ciotto
- * Desc: This state preloads all the assets.
- * ===========================================================================
+ * preload.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
-import constants from '../constants';
+import { constants } from '../constants';
 
 export default class PreloadState extends Phaser.State {
     preload() {

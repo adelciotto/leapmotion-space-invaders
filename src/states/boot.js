@@ -1,10 +1,8 @@
 /*
- * ===========================================================================
- * File: boot.js
- * Author: Anthony Del Ciotto
- * Desc: This state configures the Phaser framework; setting various
- * properties and options.
- * ===========================================================================
+ * boot.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
 export default class BootState extends Phaser.State {
@@ -20,7 +18,7 @@ export default class BootState extends Phaser.State {
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
         this.scale.scaleMode = this.scale.fullScreenScaleMode =
-            Phaser.ScaleManager.SHOW_ALL;
+                               Phaser.ScaleManager.SHOW_ALL;
 
         // capture certain keys to prevent their default actions in the browser.
         // this is only necessary because this is an HTML5 game.

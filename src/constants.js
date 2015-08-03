@@ -1,16 +1,13 @@
 /*
- * ===========================================================================
- * File: constants.js
- * Author: Anthony Del Ciotto
- * Desc: TODO
- * ===========================================================================
+ * constants.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
-var constants = {
+export const constants = {
     AssetKeys: {
         HTML_LOGO: 'html-logo',
         PHASER_LOGO: 'phaser-logo',
     }
 };
-
-export default constants;

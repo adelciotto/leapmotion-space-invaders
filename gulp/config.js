@@ -1,9 +1,8 @@
 /*
- * ===========================================================================
- * File: config.js
- * Author: Anthony Del Ciotto
- * Desc: TODO
- * ===========================================================================
+ * config.js
+ * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+ *
+ * Distributed under terms of the MIT license.
  */
 
 module.exports = {
