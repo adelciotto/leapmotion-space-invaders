@@ -10,6 +10,7 @@ export default class BootState extends Phaser.State {
         // add the Phaser Debug plugin
         this.game.add.plugin(Phaser.Plugin.Debug);
 
+        this.stage.backgroundColor = 0xFFFFFF;
         this.physics.startSystem(Phaser.Physics.ARCADE);
 
         // configure the scale manager

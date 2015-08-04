@@ -9,7 +9,8 @@ import { constants } from '../constants';
 
 export default class PreloadState extends Phaser.State {
     preload() {
-        this.load.image(constants.AssetKeys.HTML_LOGO, 'res/img/html.png');
+        this.load.image(constants.AssetKeys.LEAP_LOGO,
+                        'res/img/leap-motion-logo.png');
         this.load.image(constants.AssetKeys.PHASER_LOGO, 'res/img/phaser.png');
     }
 

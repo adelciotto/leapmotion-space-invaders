@@ -10,10 +10,11 @@ import { constants } from '../constants';
 export default class SplashState extends Phaser.State {
     create() {
         // create the html logo sprite
-        this.htmlLogo = this.add.sprite(this.world.centerX, this.world.centerY,
-                                        constants.AssetKeys.HTML_LOGO);
-        this.htmlLogo.anchor.set(0.5);
-        this.htmlLogo.alpha = 0;
+        this.leapLogo = this.add.sprite(this.world.centerX, this.world.centerY,
+                                        constants.AssetKeys.LEAP_LOGO);
+        this.leapLogo.anchor.set(0.5);
+        this.leapLogo.scale.set(1.5);
+        this.leapLogo.alpha = 0;
 
         // create the phaser logo sprite
         this.phaserLogo = this.add.sprite(this.world.centerX, this.world.centerY,
@@ -22,10 +23,10 @@ export default class SplashState extends Phaser.State {
         this.phaserLogo.alpha = 0;
 
         // create the fade-in tween
-        const htmlTween = this.add.tween(this.htmlLogo)
+        const leapTween = this.add.tween(this.leapLogo)
                         .to({alpha: 1}, 1000,
                             Phaser.Easing.Cubic.In, true, 0, 0, true);
-        htmlTween.onComplete.add(f => {
+        leapTween.onComplete.add(f => {
             const phaserTween = this.add.tween(this.phaserLogo)
                               .to({alpha: 1}, 1000, Phaser.Easing.Cubic.In,
                                   true, 0, 0, true);

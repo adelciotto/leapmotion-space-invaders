@@ -7,7 +7,7 @@
 
 export const constants = {
     AssetKeys: {
-        HTML_LOGO: 'html-logo',
+        LEAP_LOGO: 'leap-logo',
         PHASER_LOGO: 'phaser-logo',
     }
 };
