@@ -9,23 +9,6 @@ The template is running live [here](http://adelciotto.github.io/leapmotion-proto
 
 ### Setting up the template
 
-#### install node & npm
-
-Firstly, ensure that Node.js & npm are installed:
-
-```shell
-node -v   # should return something like V0.12.2
-npm -v    # should return something like 2.7.5
-```
-If not then download it [here](http://nodejs.org).
-
-#### clone the repo
-
-```shell
-git clone https://github.com/adelciotto/leapmotion-prototype-template.git
-cd leapmotion-prototype-template
-```
-
 #### create a github repo for your prototype
 
 On github, create a new repository and make sure to leave *Initialize this repository with a README* unchecked.
@@ -33,16 +16,12 @@ Furthermore, leave *Add .gitignore* and *Add a license* to **None**
 
 Note: When naming the repo, stick to the convention: **your-prototype-name**.
 
-Then simply add this new repo as the remote origin:
+#### setup the template
+
+run the install script:
 
 ```shell
-git remote set-url origin https://github.com/your-github-username/your-repo-name.git
-```
-
-#### install all dependencies & run the watch task
-
-```shell
-npm i && npm run watch
+./install.sh
 ```
 
 ### Developing a prototype
@@ -71,7 +50,7 @@ Stick to the JS coding conventions outlined [here](https://github.com/airbnb/jav
 To update the deployed game; please run the gh pages deploy script in the root directory:
 
 ```shell
-./git-gh-deploy
+./deploy
 ```
 
 **Note: only deploy when you feel you have something remotely playable**
