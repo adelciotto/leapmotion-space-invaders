@@ -16,6 +16,13 @@ Furthermore, leave *Add .gitignore* and *Add a license* to **None**
 
 Note: When naming the repo, stick to the convention: **your-prototype-name**.
 
+#### clone the repo
+
+```shell
+git clone https://github.com/adelciotto/leapmotion-prototype-template.git
+cd leapmotion-prototype-template
+```
+
 #### setup the template
 
 run the install script:

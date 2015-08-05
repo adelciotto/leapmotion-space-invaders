@@ -16,10 +16,6 @@ if !hash node 2>/dev/null; then
   exit 0
 fi
 
-## clone the template repo and change into that directory
-git clone https://github.com/adelciotto/leapmotion-prototype-template.git
-cd leapmotion-prototype-template
-
 ## set the new remote repo
 git remote set-url origin https://github.com/$1/$2.git
 
