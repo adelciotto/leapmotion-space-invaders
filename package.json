@@ -1,7 +1,6 @@
 {
   "name": "leapmotion-prototype-template",
   "private": true,
-  "description": "my personal project template for phaser games. Uses gulp for task automation",
   "scripts": {
     "start": "gulp start",
     "watch": "gulp",
@@ -11,12 +10,6 @@
     "type": "git",
     "url": "https://github.com/adelciotto/leapmotion-prototype-template"
   },
-  "keywords": [
-    "leapmotion",
-    "phaser.js",
-    "game",
-    "gulp"
-  ],
   "author": "Anthony Del Ciotto",
   "license": "MIT",
   "bugs": {

@@ -17,7 +17,8 @@ export default class SplashState extends Phaser.State {
         this.leapLogo.alpha = 0;
 
         // create the phaser logo sprite
-        this.phaserLogo = this.add.sprite(this.world.centerX, this.world.centerY,
+        this.phaserLogo = this.add.sprite(this.world.centerX,
+                                          this.world.centerY,
                                           constants.AssetKeys.PHASER_LOGO);
         this.phaserLogo.anchor.set(0.5);
         this.phaserLogo.alpha = 0;

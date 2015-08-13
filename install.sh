@@ -8,6 +8,7 @@
 # check if cmd args supplied
 if [[ -z "$1" || -z "$2" ]]; then
   echo "usage: ./install.sh <github-username> <prototype-repo-name>"
+  exit 0
 fi
 
 # check if node and npm is installed
