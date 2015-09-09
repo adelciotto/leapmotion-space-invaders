@@ -5,7 +5,10 @@
  * Distributed under terms of the MIT license.
  */
 
+require('leapjs-plugins');
+
 import { constants } from '../constants';
+import Leap from 'leapjs';
 
 export default class PlayState extends Phaser.State {
     create() {

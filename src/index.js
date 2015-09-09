@@ -7,13 +7,23 @@
 
 var states = require('./states');
 
-window.onload = function() {
-    const game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
+import _ from 'underscore';
 
-    // add all the game states and then start the boot state
-    _.each(states, (val, key) => {
-        game.state.add(`${key}`, val);
-    });
+const LeapMotionPrototypeTemplate = {
+    start() {
+        const game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
 
-    game.state.start('boot');
+        // add all the game states and then start the boot state
+        _.each(states, (val, key) => {
+            game.state.add(`${key}`, val);
+        });
+
+        game.state.start('boot');
+    }
 };
+
+// ew, think of a better way to do this. Id really rather not the start function
+// encapsulated in a global object but It's not too big of a deal.
+// None of the source we are writing will be used publicly, but still TODO!
+module.exports = LeapMotionPrototypeTemplate;
+window.LeapMotionPrototypeTemplate = LeapMotionPrototypeTemplate;

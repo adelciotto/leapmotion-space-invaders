@@ -12,9 +12,7 @@
 
   // Define globals exposed by vendor libraries
   "globals": {
-    "Phaser": true,
-    "_": true,
-    "Leap": true
+    "Phaser": true
   },
 
   // Allow ES6.
