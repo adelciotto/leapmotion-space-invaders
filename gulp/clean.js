@@ -9,5 +9,5 @@ var gulp = require('gulp');
 var del = require('del');
 
 gulp.task('clean', function(done) {
-    del(['./dist'], done);
+    del(global.paths.dist, done);
 });

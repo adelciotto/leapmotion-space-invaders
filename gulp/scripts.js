@@ -10,54 +10,60 @@ var gulpif = require('gulp-if');
 var util = require('util');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var livereload = require('gulp-livereload');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var watchify = require('watchify');
-var browserSync = require('browser-sync').create();
-var reload = browserSync.reload;
-var ngAnnotate = require('browserify-ngannotate');
-var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var _ = require('underscore');
 
-gulp.task('scripts', function() {
-    bundle(false);
+var browserifyConfig = {
+    paths: global.paths.js
+};
+
+_.each(global.BuildMode, function(val, key) {
+    gulp.task('scripts:' + val, ['jshint'], function() {
+        bundle(val);
+    });
 });
 
-gulp.task('scripts:watch', function() {
-    bundle(true);
-});
+function rebundle(mode, bundler) {
+    var shouldReload = (mode === global.BuildMode.WATCH);
+    var createSourceMaps = (mode === global.BuildMode.DEV || shouldReload);
 
-var bundle = function(watch) {
+    return bundler.bundle()
+       .on('error', function(e) {
+            util.log('Browserify Error: ', e);
+        })
+        .pipe(source('bundle.js'))
+        .pipe(buffer())
+        .pipe(gulpif(createSourceMaps, sourcemaps.init({ loadMaps: true })))
+        .pipe(gulpif(createSourceMaps, sourcemaps.write()))
+        .pipe(gulp.dest(global.paths.dist))
+        .pipe(gulpif(shouldReload, livereload()));
+}
+
+function bundle(mode) {
     var bro;
-    var ops = { debug: true, paths: ['./src'] };
 
-    if (watch) {
-        browserSync.init({ proxy: 'localhost:8000' });
-        bro = watchify(browserify('./src/index.js',
-            _.extend(watchify.args, ops)));
+    if (mode === global.BuildMode.DEV) {
+        // if dev mode then make sure to pass debug flag
+        bro = browserify(global.paths.jsEntry, _.extend(browserifyConfig, {
+            debug: true
+        }));
+    } else if (mode === global.BuildMode.PROD) {
+        bro = browserify(global.paths.jsEntry, browserifyConfig);
+    } else if (mode === global.BuildMode.WATCH) {
+        // if watch mode make sure to use watchify for fast rebundling
+        bro = watchify(browserify(global.paths.jsEntry,
+                    _.extend(watchify.args, browserifyConfig, { debug: true})));
+
+        // on any es6 file change, perform a rebundle
         bro.on('update', function() {
-            rebundle(bro);
+            rebundle(mode, bro);
         });
-    } else {
-        bro = browserify('./src/index.js', ops);
     }
 
-    bro.transform(babelify.configure({ compact: false }));
-    bro.transform(ngAnnotate);
-
-    var rebundle = function(bundler) {
-        return bundler.bundle()
-            .on('error', function(e) {
-                util.log('Browserify Error: ', e);
-            })
-            .pipe(source('bundle.js'))
-            .pipe(buffer())
-            .pipe(sourcemaps.init({ loadMaps: true }))
-            .pipe(sourcemaps.write())
-            .pipe(gulp.dest('./dist'))
-            .pipe(reload({ stream: true }));
-    };
-
-    return rebundle(bro);
-};
+    bro.transform(babelify.configure({ compact: true }));
+    return rebundle(mode, bro);
+}

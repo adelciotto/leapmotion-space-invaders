@@ -39,9 +39,11 @@ Please familiarise yourself with both the [Phaser API](http://phaser.io/docs) an
 
 #### npm tasks:
 
-* ```npm run start``` - Builds the scripts and assets; then starts the server at [localhost:8000](http://localhost:8000).
-* ```npm run watch``` - Builds the scripts and assets; then constantly watches all the ES6 source files for any changes. hosted at [localhost:3000](http://localhost:3000)
-* ```npm run build``` - Only builds the scripts and assets.
+* ```npm run watch``` - Builds the scripts and assets; then constantly watches all the ES6 source files for any changes. hosted at [localhost:8000](http://localhost:8000)
+* ```npm run dev``` - Builds the scripts and assets in dev mode; then hosts the game at [localhost:8000](http://localhost:8000)
+* ```npm run prod``` - Builds the scripts and assets in prod mode; then hosts the game at [localhost:8000](http://localhost:8000)
+* ```npm run build:dev``` - Builds the scripts and assets in dev mode.
+* ```npm run build:prod``` - Builds the scripts and assets in prod mode.
 
 #### JS Conventions
 
@@ -61,7 +63,3 @@ To update the deployed game; please run the gh pages deploy script in the root d
 ```
 
 **Note: only deploy when you feel you have something remotely playable**
-
-#### add your prototype to leapmotion-base
-
-Once you have something deployed; please follow the README at the [leapmotion-base repo](https://github.com/adelciotto/leapmotion-base) for how to add the prototype.

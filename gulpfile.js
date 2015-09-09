@@ -6,51 +6,44 @@
  */
 
 var gulp = require('gulp');
-var fs = require('fs');
-var runSequence = require('run-sequence');
-var config = require('./gulp/config.js');
-var files = fs.readdirSync('./gulp');
+var requireDir = require('require-dir');
+var runSeq = require('run-sequence');
+var _ = require('underscore');
 
-/**
- * Require each of the gulp tasks from the 'gulp/' folder.
- * Each task is split into it's own file to avoid having one large and difficult
- * to maintain gulp script.
- */
-files.forEach(function(file) {
-    try {
-        require('./gulp/' + file);
-    } catch(e) {
-        console.error('Unable to require file: ' + file + ': ', e);
-    }
+// specify some global paths for the gulp tasks
+global.paths = {
+    root: '.',
+    js: './src',
+    res: './res',
+    dist: './dist',
+
+    get scripts() { return this.js + '/**/*.js'; },
+    get jsEntry() { return this.js + '/index.js'; }
+};
+
+// define a readable enum for the different build modes
+global.BuildMode = {
+    DEV: 'dev',
+    PROD: 'prod',
+    WATCH: 'watch'
+};
+
+// Require each of the gulp tasks from the 'gulp/' folder.
+// Each task is split into it's own file to avoid having one large and difficult
+// gulp script to maintain.
+requireDir('./gulp', { recurse: true });
+
+_.each(global.BuildMode, function(val, key) {
+    // define the build task for each different build mode
+    gulp.task('build:' + val, function(done) {
+        runSeq('copy', 'assets', ['scripts:' + val], done);
+    });
+
+    // define the main tasks for each different build mode
+    gulp.task(val, function(done) {
+        runSeq('clean', 'build:' + val, 'start:' + val, done);
+    });
 });
 
-/**
- * Define the 'build' task. This task only builds all the scripts and assets.
- * The server is not started, and the files are not watched.
- */
-gulp.task('build', function(cb) {
-    runSequence('clean', ['copy', 'assets'], ['jshint', 'scripts'], cb);
-});
-
-/**
- * Define the 'start' task. This task simply builds all the scripts and assets;
- * then starts the server. No files will be watched. This task it suitable to
- * simulate a production environment.
- */
-gulp.task('start', function(cb) {
-    runSequence('build', 'serve', cb);
-});
-
-/**
- * Define the 'watch' task. This task watches all es6 source files; rebuilding
- * them and refreshing the browser on saved changes. This task is suitable for
- * development.
- */
-gulp.task('watch', function(cb) {
-    runSequence(['copy', 'assets'], ['jshint', 'scripts:watch'], 'serve', cb);
-});
-
-/**
- * Simply running 'gulp' at the command line will by default run the watch task.
- */
+// make the default task 'gulp watch' for now..
 gulp.task('default', ['watch']);
