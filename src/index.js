@@ -8,23 +8,13 @@
 import _ from 'underscore';
 import states from './states';
 
-let game = null;
+window.onload = function() {
+    const game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
 
-const LeapMotionPrototypeTemplate = {
-    start() {
-        game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
+    // add all the game states and then start the boot state
+    _.each(states, (val, key) => {
+        game.state.add(`${key}`, val);
+    });
 
-        // add all the game states and then start the boot state
-        _.each(states, (val, key) => {
-            game.state.add(`${key}`, val);
-        });
-
-        game.state.start('boot');
-    }
+    game.state.start('boot');
 };
-
-// ew, think of a better way to do this. Id really rather not have the start
-// function encapsulated in a global object but It's not too big of a deal.
-// None of the source we are writing will be used publicly, but still TODO!
-module.exports = LeapMotionPrototypeTemplate;
-window.LeapMotionPrototypeTemplate = LeapMotionPrototypeTemplate;

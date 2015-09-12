@@ -1,7 +1,7 @@
 {
   "name": "leapmotion-prototype-template",
-  "private": true,
   "version": "1.0.0",
+  "main": "./dist/bundle.js",
   "scripts": {
     "watch": "gulp watch",
     "dev": "gulp dev",
