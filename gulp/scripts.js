@@ -13,6 +13,7 @@ var buffer = require('vinyl-buffer');
 var livereload = require('gulp-livereload');
 var browserify = require('browserify');
 var babelify = require('babelify');
+var uglify = require('gulp-uglify');
 var watchify = require('watchify');
 var sourcemaps = require('gulp-sourcemaps');
 var _ = require('underscore');
@@ -39,6 +40,7 @@ function rebundle(mode, bundler) {
         .pipe(buffer())
         .pipe(gulpif(createSourceMaps, sourcemaps.init({ loadMaps: true })))
         .pipe(gulpif(createSourceMaps, sourcemaps.write()))
+        .pipe(gulpif(!createSourceMaps, uglify()))
         .pipe(gulp.dest(global.paths.dist))
         .pipe(gulpif(shouldReload, livereload()));
 }
