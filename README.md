@@ -28,7 +28,7 @@ cd leapmotion-prototype-template
 run the install script:
 
 ```shell
-./install.sh
+./scripts/install.sh
 ```
 
 ### Developing a prototype
@@ -39,11 +39,13 @@ Please familiarise yourself with both the [Phaser API](http://phaser.io/docs) an
 
 #### npm tasks:
 
-* ```npm run watch``` - Builds the scripts and assets; then constantly watches all the ES6 source files for any changes. hosted at [localhost:8000](http://localhost:8000)
-* ```npm run dev``` - Builds the scripts and assets in dev mode; then hosts the game at [localhost:8000](http://localhost:8000)
-* ```npm run prod``` - Builds the scripts and assets in prod mode; then hosts the game at [localhost:8000](http://localhost:8000)
-* ```npm run build:dev``` - Builds the scripts and assets in dev mode.
-* ```npm run build:prod``` - Builds the scripts and assets in prod mode.
+* ```npm run dev``` - Builds and scripts and assets in development mode, then
+hosts the game at [localhost:8000](http://localhost:8000). All source files and
+assets are watched and a browser reload will be triggered on any changes.
+* ```npm run prod``` - Builds and scripts and assets in production mode, then
+hosts the game at [localhost:8000](http://localhost:8000).
+* ```npm run build``` - Builds the scripts and assets in production mode.
+This means all source files are minified and all assets are optimised.
 
 #### JS Conventions
 
@@ -59,7 +61,7 @@ Stick to the JS coding conventions outlined [here](https://github.com/airbnb/jav
 To update the deployed game; please run the gh pages deploy script in the root directory:
 
 ```shell
-./deploy
+./scripts/deploy
 ```
 
 **Note: only deploy when you feel you have something remotely playable**

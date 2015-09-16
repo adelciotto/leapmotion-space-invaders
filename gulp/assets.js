@@ -1,22 +1,23 @@
 /*
- * assets.js
- * Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
- *
- * Distributed under terms of the MIT license.
- */
+* assets.js
+* Copyright (C) 2015 adelciotto <anthdel.developer@gmail.com>
+*
+* Distributed under terms of the MIT license.
+*/
 
-var gulp = require('gulp');
-var imagemin = require('gulp-imagemin');
-var cached = require('gulp-cached');
+import gulp from 'gulp';
+import gulpif from 'gulp-if';
+import imagemin from 'gulp-imagemin';
+import cached from 'gulp-cached';
 
 /**
- * Define a task to minimise all images used
- * in the game.
- */
+* Define a task to minimise all images used
+* in the game.
+*/
 gulp.task('assets:imagemin', function() {
-    return gulp.src('./res/img/*.png')
-        .pipe(cached('imagemin'))
-        .pipe(gulp.dest('./dist/res/img'));
+   return gulp.src('./res/img/*.png')
+       .pipe(gulpif(!global.isDevEnv, cached('imagemin')))
+       .pipe(gulp.dest(`${global.paths.dist}/res/img`));
 });
 
 /**
@@ -25,8 +26,8 @@ gulp.task('assets:imagemin', function() {
 * images in that folder were optimised and already moved to the dist folder.
 */
 gulp.task('assets:copy', function() {
-    return gulp.src(['./res/**/*', '!./res/img'])
-        .pipe(gulp.dest('./dist/res'));
+   return gulp.src([global.paths.resources, '!./res/img'])
+       .pipe(gulp.dest('./dist/res'));
 });
 
 gulp.task('assets', ['assets:imagemin', 'assets:copy']);

@@ -5,8 +5,8 @@
  * Distributed under terms of the MIT license.
  */
 
-var gulp = require('gulp');
-var del = require('del');
+import gulp from 'gulp';
+import del from 'del';
 
 gulp.task('clean', function(done) {
     del(global.paths.dist, done);

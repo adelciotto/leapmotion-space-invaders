@@ -5,9 +5,9 @@
  * Distributed under terms of the MIT license.
  */
 
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var cached = require('gulp-cached');
+import gulp from 'gulp';
+import jshint from 'gulp-jshint';
+import cached from 'gulp-cached';
 
 gulp.task('jshint', function() {
     return gulp.src(global.paths.scripts)
