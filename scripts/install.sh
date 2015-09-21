@@ -17,12 +17,14 @@ if !hash node 2>/dev/null; then
   echo "install node bro..."
   exit 0
 fi
+echo "node is installed"
 
 ## set the new remote repo
-echo "setting new remote origin url"
 git remote set-url origin https://github.com/$1/$2.git
+echo "set the new remote origin url to https://github.com/$1/$2.git"
 
 ## install dependencies
+echo "installing npm dependencies (may take a few minutes)..."
 npm i
 echo ""
-echo "start developing: run npm watch"
+echo "start developing: run npm dev"

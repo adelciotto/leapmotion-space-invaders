@@ -20,7 +20,8 @@ Note: When naming the repo, stick to the convention: **your-prototype-name**.
 
 ```shell
 git clone https://github.com/adelciotto/leapmotion-prototype-template.git
-cd leapmotion-prototype-template
+your-prototype-name/
+cd your-prototype-name
 ```
 
 #### setup the template
@@ -28,8 +29,9 @@ cd leapmotion-prototype-template
 run the install script:
 
 ```shell
-./scripts/install.sh
+./scripts/install.sh <your-github-username> <your-prototype-name>
 ```
+*Note: Please omit the brackets.*
 
 ### Developing a prototype
 
