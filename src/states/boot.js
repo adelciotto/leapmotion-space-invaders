@@ -5,10 +5,14 @@
  * Distributed under terms of the MIT license.
  */
 
+var config = require('../config.json');
+
 export default class BootState extends Phaser.State {
     create() {
         // add the Phaser Debug plugin
-        this.game.add.plugin(Phaser.Plugin.Debug);
+        if (config.isDevEnv) {
+            this.game.add.plugin(Phaser.Plugin.Debug);
+        }
 
         this.stage.backgroundColor = 0xFFFFFF;
         this.physics.startSystem(Phaser.Physics.ARCADE);

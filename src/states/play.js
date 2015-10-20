@@ -16,7 +16,7 @@ export default class PlayState extends Phaser.State {
                                     constants.AssetKeys.PHASER_LOGO);
         this.logo.anchor.set(0.5);
         this.helpText = this.add.text(this.game.width/2, this.game.height*0.9,
-                                      'Roll your hand to rotate the sprite',
+                                      'Roll your hand to rotate the image',
                                       { fontSize: 32, align: 'center' });
         this.helpText.anchor.set(0.5);
 

@@ -16,12 +16,19 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 import sourcemaps from 'gulp-sourcemaps';
 import _ from 'underscore';
+import fs from 'fs';
 
 const browserifyConfig = {
     paths: global.paths.js
 };
 
-gulp.task('scripts', function() {
+gulp.task('create-config', function(cb) {
+    fs.writeFile(`${global.paths.js}/config.json`, JSON.stringify({
+        isDevEnv: global.isDevEnv
+    }), cb);
+});
+
+gulp.task('scripts', ['create-config'], function() {
     let bro;
 
     if (global.isDevEnv) {
