@@ -6,10 +6,12 @@
  */
 
 import _ from 'underscore';
+import constants from './constants';
 import states from './states';
 
 window.onload = function() {
-    const game = new Phaser.Game(800, 480, Phaser.AUTO, 'game', null);
+    const game = new Phaser.Game(constants.GAME_WIDTH, constants.GAME_HEIGHT,
+            Phaser.AUTO, 'game', null, false, false);
 
     // add all the game states and then start the boot state
     _.each(states, (val, key) => {

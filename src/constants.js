@@ -5,9 +5,20 @@
  * Distributed under terms of the MIT license.
  */
 
-export const constants = {
+import utils from './utils';
+
+const constants = {
+    GAME_WIDTH: 480,
+    GAME_HEIGHT: 320,
+    DEFAULT_NUM_ALIEN_COLS: 11,
+    DEFAULT_NUM_ALIEN_ROWS: 5,
+
     AssetKeys: {
-        LEAP_LOGO: 'leap-logo',
-        PHASER_LOGO: 'phaser-logo',
+        LEAP_HOWTO: 'leap-howto',
+        SPRITESHEET: 'spritesheet',
+        RECT: 'rect'
     }
 };
+
+utils.objFreezeRecursive(constants);
+export default constants;

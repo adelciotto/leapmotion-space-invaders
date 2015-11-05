@@ -20,8 +20,8 @@ fi
 echo "node is installed"
 
 ## set the new remote repo
-git remote set-url origin https://github.com/$1/$2.git
-echo "set the new remote origin url to https://github.com/$1/$2.git"
+git remote set-url origin git@github.com:$1/$2.git
+echo "set the new remote origin url to git@github.com:$1/$2.git"
 
 ## install dependencies
 echo "installing npm dependencies (may take a few minutes)..."
