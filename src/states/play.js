@@ -5,16 +5,10 @@
  * Distributed under terms of the MIT license.
  */
 
-require('leapjs-plugins');
-
+import Leap from '../leap';
 import Player from '../entities/player';
 import AlienSquad from '../entities/alien_squad';
-import Leap from 'leapjs';
-import leapUtils from '../utils/leap_utils';
 import config from '../config.json';
-
-const MinHandVisible = 0.25;
-const MinPinchStrength = 0.75;
 
 export default class PlayState extends Phaser.State {
     create() {
@@ -25,15 +19,17 @@ export default class PlayState extends Phaser.State {
         this.add.existing(this._player);
         this.add.existing(this._aliens);
 
-        this.controller = new Leap.Controller({ enableGestures: true });
-        this.controller.connect();
-        this.controller.on('frame', this._onFrame.bind(this));
-
+        this._leapController = new Leap.LeapController();
+        this._leapController.on(Leap.LeapListeners.OnMove, this._handleOnMove, this,
+                { axis: Leap.LeapUtils.Axis.X });
+        this._leapController.on(Leap.LeapListeners.OnPinching, this._handleOnPinching, this,
+                { minPinchStrength: 0.85 });
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
     }
 
     update() {
-        this.physics.arcade.overlap(this._player.weapon, this._aliens, this._onAlienHit, null, this);
+        this.physics.arcade.overlap(this._player.weapon, this._aliens, this._handleAlienHit, null,
+                this);
     }
 
     render() {
@@ -48,19 +44,15 @@ export default class PlayState extends Phaser.State {
         }
     }
 
-    _onFrame(frame) {
-        frame.hands.forEach((hand, idx) => {
-            if (hand.timeVisible > MinHandVisible) {
-                this._player.setPosition(hand.palmPosition[0]);
-
-                if (hand.pinchStrength > MinPinchStrength) {
-                    this._player.fire(leapUtils.findPinchingFinger(hand).id);
-                }
-            }
-        });
+    _handleOnMove(palmPosition) {
+        this._player.setPosition(palmPosition);
     }
 
-    _onAlienHit(laser, alien) {
+    _handleOnPinching(pinchingFinger) {
+        this._player.fire(pinchingFinger.id);
+    }
+
+    _handleAlienHit(laser, alien) {
         laser.kill();
         alien.kill();
     }

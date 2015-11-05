@@ -5,10 +5,15 @@
  * Distributed under terms of the MIT license.
  */
 
-import utils from './index';
+import utils from '../utils';
 import Leap from 'leapjs';
 
-const leapUtils = {
+const LeapUtils = {
+    Axis: {
+        X: 0, Y: 1, Z: 2,
+        ALL: '4'
+    },
+
     findPinchingFinger(hand) {
         let pincher;
         let closest = 500;
@@ -26,5 +31,5 @@ const leapUtils = {
     }
 };
 
-utils.objFreezeRecursive(leapUtils);
-export default leapUtils;
+utils.objFreezeRecursive(LeapUtils);
+export default LeapUtils;

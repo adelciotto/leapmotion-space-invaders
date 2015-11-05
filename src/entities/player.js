@@ -19,8 +19,8 @@ export default class Player extends Phaser.Sprite {
         this.anchor.set(0.5);
         this.scale.set(0.5);
         this.tint = 0x00FF00;
-        this._lastPinchedFingerId = 0;
         this.weapon = new Weapon(game);
+        this._lastPinchedFingerId = 0;
 
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
         this.body.fixedRotation = true;

@@ -1,30 +1,23 @@
-## leapmotion-prototype-template
+## leapmotion-space-invaders
 
 This repository contains a basic template for our prototype leapmotion games. We use the [Phaser](http://phaser.io) game framework,
 and the [Leap-Motion API](https://developer.leapmotion.com/documentation/javascript/devguide/Leap_Overview.html).
 
 ### View:
 
-The template is running live [here](http://adelciotto.github.io/leapmotion-prototype-template/)
+The game is running live [here](http://adelciotto.github.io/leapmotion-space-invaders/)
 
-### Setting up the template
-
-#### create a github repo for your prototype
-
-On github, create a new repository and make sure to leave *Initialize this repository with a README* unchecked.
-Furthermore, leave *Add .gitignore* and *Add a license* to **None**
-
-Note: When naming the repo, stick to the convention: **your-prototype-name**.
+### Develop:
 
 #### clone the repo
 
 ```shell
-git clone https://github.com/adelciotto/leapmotion-prototype-template.git
+git clone https://github.com/adelciotto/leapmotion-space-invaders.git
 your-prototype-name/
 cd your-prototype-name
 ```
 
-#### setup the template
+#### setup the project
 
 run the install script:
 
@@ -32,8 +25,6 @@ run the install script:
 ./scripts/install.sh <your-github-username> <your-prototype-name>
 ```
 *Note: Please omit the brackets.*
-
-### Developing a prototype
 
 #### api reference
 
