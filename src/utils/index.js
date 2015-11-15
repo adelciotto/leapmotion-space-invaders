@@ -18,6 +18,14 @@ const utils = {
                 Object.freeze(obj[key]);
             }
         });
+    },
+
+    objCheckDefaults(obj, defaults) {
+        _.each(defaults, (val, key) => {
+            if (typeof obj[key] === 'undefined') {
+                obj[key] = val;
+            }
+        });
     }
 };
 

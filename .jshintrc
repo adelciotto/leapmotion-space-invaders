@@ -12,7 +12,8 @@
 
   // Define globals exposed by vendor libraries
   "globals": {
-    "Phaser": true
+    "Phaser": true,
+	"PIXI": true
   },
 
   // Allow ES6.

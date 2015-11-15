@@ -13,10 +13,10 @@ export default class Weapon extends Phaser.Group {
 
         this.nextFire = 0;
         this.laserSpeed = 400;
-        this.fireRate = 100;
+        this.fireRate = 0;
         this._dir = dir;
 
-        for (let i = 0; i < 16; ++i) {
+        for (let i = 0; i < 32; ++i) {
             this.add(new Laser(game), true);
         }
     }

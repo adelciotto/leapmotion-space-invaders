@@ -14,8 +14,11 @@ const LeapListeners = {
         defaultOpts: { axis: LeapUtils.Axis.ALL }
     },
     OnPinching: {
-        name: 'OnPinching',
-        defaultOpts: { minPinchStrength: 0.75 }
+        name: 'OnPinching'
+    },
+    OnPinched: {
+        name: 'OnPinched',
+        defaultOpts: { pinchDuration: 15 }
     }
 };
 

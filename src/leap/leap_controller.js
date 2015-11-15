@@ -7,13 +7,20 @@
 
 import Leap from 'leapjs';
 import LeapUtils from './leap_utils';
+import utils from '../utils';
 import _ from 'underscore';
 
 const MinHandVisible = 0.25;
+const MinHandConfidence = 0.5;
 
 export default class LeapController {
-    constructor() {
+    constructor(game, options = {}) {
+        utils.objCheckDefaults(options, LeapUtils.DefaultOpts);
+
+        this._game = game;
+        this._options = options;
         this._listeners = {};
+        this._timePinched = 0;
 
         // initialise leapjs
         this._controller = new Leap.Controller({ enableGestures: true });
@@ -22,11 +29,7 @@ export default class LeapController {
     }
 
     on(listener, callback, ctx = null, options = {}) {
-        _.each(listener.defaultOpts, (val, key) => {
-            if (typeof options[key] === 'undefined') {
-                options[key] = val;
-            }
-        });
+        utils.objCheckDefaults(options, listener.defaultOpts);
 
         this._listeners[listener.name] = {
             callback: callback.bind(ctx),
@@ -39,7 +42,11 @@ export default class LeapController {
             // check the time the hand has been visible to the device.
             // This helps ensure that minor motion or environmental changes not in control of the
             // player don't affect the gameplay.
-            if (hand && hand.timeVisible > MinHandVisible) {
+            if (hand && hand.timeVisible > MinHandVisible && hand.confidence >= MinHandConfidence) {
+                if (hand.pinchStrength < this._options.minPinchStrength - 0.25) {
+                    this._timePinched = 0;
+                }
+
                 _.each(this._listeners, (val, key) => {
                     this[`_process${key}`](frame, hand, val);
                 });
@@ -56,10 +63,16 @@ export default class LeapController {
     }
 
     _processOnPinching(frame, hand, listener) {
-        const opts = listener.options;
-
-        if (hand.pinchStrength > opts.minPinchStrength) {
+        if (hand.pinchStrength >= this._options.minPinchStrength) {
             listener.callback(LeapUtils.findPinchingFinger(hand), hand);
+        }
+    }
+
+    _processOnPinched(frame, hand, listener) {
+        if (hand.pinchStrength >= this._options.minPinchStrength && this._timePinched <
+                listener.options.pinchDuration) {
+            listener.callback(LeapUtils.findPinchingFinger(hand), hand);
+            this._timePinched += this._game.time.elapsed;
         }
     }
 }

@@ -9,7 +9,6 @@ import constants from '../constants';
 
 export default class SplashState extends Phaser.State {
     create() {
-        // create the phaser logo sprite
         this.leapImg = this.add.sprite(this.world.centerX, this.world.centerY,
                 constants.AssetKeys.LEAP_HOWTO);
         this.leapImg.anchor.set(0.5);

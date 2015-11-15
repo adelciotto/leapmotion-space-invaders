@@ -5,7 +5,7 @@
  * Distributed under terms of the MIT license.
  */
 
-exports.boot = require('./boot.js');
-exports.preload = require('./preload.js');
-exports.splash = require('./splash.js');
-exports.play = require('./play.js');
+exports.boot = require('./boot');
+exports.preload = require('./preload');
+exports.splash = require('./splash');
+exports.play = require('./play');

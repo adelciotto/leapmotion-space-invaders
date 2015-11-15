@@ -11,7 +11,8 @@ export default class PreloadState extends Phaser.State {
     preload() {
         this.load.image(constants.AssetKeys.LEAP_HOWTO, 'res/img/leap-instructions.png');
         this.load.spritesheet(constants.AssetKeys.SPRITESHEET, 'res/img/sheet.png', 62, 34);
-        //this.load.atlas('spritesheet', 'res/img/spritesheet.png', 'res/img/spritesheet.json');
+        this.load.bitmapFont(constants.AssetKeys.GAME_FONT, 'res/fonts/game_font.png',
+                'res/fonts/game_font.xml');
     }
 
     create() {

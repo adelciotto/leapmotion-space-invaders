@@ -9,6 +9,10 @@ import utils from '../utils';
 import Leap from 'leapjs';
 
 const LeapUtils = {
+    DefaultOpts: {
+        minPinchStrength: 0.8
+    },
+
     Axis: {
         X: 0, Y: 1, Z: 2,
         ALL: '4'

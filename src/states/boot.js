@@ -11,6 +11,7 @@ export default class BootState extends Phaser.State {
     create() {
         // add the Phaser Debug plugin
         if (config.isDevEnv) {
+            PIXI.Stage = Phaser.Stage;
             this.game.add.plugin(Phaser.Plugin.Debug);
         }
 
@@ -23,6 +24,7 @@ export default class BootState extends Phaser.State {
         this.scale.pageAlignVertically = true;
         this.scale.scaleMode = this.scale.fullScreenScaleMode =
                                Phaser.ScaleManager.SHOW_ALL;
+        this.game.renderer.renderSession.roundPixels = true;
 
         // capture certain keys to prevent their default actions in the browser.
         // this is only necessary because this is an HTML5 game.
